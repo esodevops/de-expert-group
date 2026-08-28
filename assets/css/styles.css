@@ -249,25 +249,87 @@ ul li:last-child {
   padding-bottom: 2.5rem;
 }
 .contact-box {
+  position: relative;
   align-self: stretch;
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 300px;
   padding: clamp(2rem, 5vw, 3.5rem);
+  overflow: hidden;
   color: white;
-  background: linear-gradient(145deg, var(--navy), var(--dark));
-  border-radius: 16px;
-  box-shadow: var(--shadow);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(33, 140, 129, 0.34), transparent 42%),
+    linear-gradient(145deg, var(--navy), var(--navy-deep));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(9, 30, 51, 0.2);
+}
+.contact-box::after {
+  content: "";
+  position: absolute;
+  right: -55px;
+  bottom: -70px;
+  width: 180px;
+  height: 180px;
+  border: 1px solid rgba(233, 196, 106, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.contact-eyebrow {
+  margin-bottom: 0.45rem;
+  color: #b8e5df;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 .contact-box h3 {
-  margin-top: 0;
+  margin: 0 0 1rem;
+  color: var(--gold);
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  letter-spacing: 0.02em;
+}
+.contact-address {
+  color: #e5edf3;
+  font-style: normal;
+  line-height: 1.75;
+}
+.contact-details {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+.contact-detail {
+  display: grid;
+  grid-template-columns: minmax(80px, 0.35fr) minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: baseline;
+}
+.contact-detail-label {
+  color: #9fc4d0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.contact-detail a {
+  color: white;
+  overflow-wrap: anywhere;
+  text-decoration-color: rgba(233, 196, 106, 0.55);
+  text-underline-offset: 0.22em;
+}
+.contact-detail a:hover,
+.contact-detail a:focus-visible {
   color: var(--gold);
 }
 .contact-prompt {
-  margin-top: 1.3rem;
-  padding-top: 1.3rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 1.5rem;
+  padding-left: 1rem;
+  color: #dce8ee;
+  border-left: 3px solid var(--teal);
   font-style: italic;
 }
 .message-us {
@@ -462,6 +524,13 @@ footer {
   }
 }
 @media (max-width: 430px) {
+  .contact-box {
+    padding: 1.6rem;
+  }
+  .contact-detail {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
   .logo-text h1 {
     font-size: 1.05rem;
   }
